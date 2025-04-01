@@ -29,42 +29,42 @@ RUN apt update && apt install -y \
 
 
 ######### Camera configuration #####
-RUN apt update && apt install -y --no-install-recommends \
-    meson \
-	ninja-build \
-	pkg-config \
-	libyaml-dev \
-	python3-yaml \
-	python3-ply \
-	python3-jinja2 \
-	libevent-dev \
-	libdrm-dev \
-	libcap-dev \
-	python3-pip \
-	python3-opencv \
-     && apt-get clean \
-     && apt-get autoremove \
-     && rm -rf /var/cache/apt/archives/* \
-     && rm -rf /var/lib/apt/lists/*
+# RUN apt update && apt install -y --no-install-recommends \
+#     meson \
+# 	ninja-build \
+# 	pkg-config \
+# 	libyaml-dev \
+# 	python3-yaml \
+# 	python3-ply \
+# 	python3-jinja2 \
+# 	libevent-dev \
+# 	libdrm-dev \
+# 	libcap-dev \
+# 	python3-pip \
+# 	python3-opencv \
+#      && apt-get clean \
+#      && apt-get autoremove \
+#      && rm -rf /var/cache/apt/archives/* \
+#      && rm -rf /var/lib/apt/lists/*
 
-RUN git clone https://github.com/raspberrypi/libcamera.git /libcamera && cd /libcamera && git checkout 6ddd79b && cd /
-RUN meson setup libcamera/build libcamera/
-RUN ninja -C libcamera/build/ install
+# RUN git clone https://github.com/raspberrypi/libcamera.git /libcamera && cd /libcamera && git checkout 6ddd79b && cd /
+# RUN meson setup libcamera/build libcamera/
+# RUN ninja -C libcamera/build/ install
 
-# Add the new installations to the python path so that picamera2 can find them
-ENV PYTHONPATH $PYTHONPATH/usr/local/lib/aarch64-linux-gnu/python3.10/site-packages:/app/kmsxx/build/py
+# # Add the new installations to the python path so that picamera2 can find them
+# ENV PYTHONPATH $PYTHONPATH/usr/local/lib/aarch64-linux-gnu/python3.10/site-packages:/app/kmsxx/build/py
 
-# Finally install picamera2 using pip
-RUN pip3 install picamera2
+# # Finally install picamera2 using pip
+# RUN pip3 install picamera2
 
-RUN apt update && apt install pkg-config python3-yaml python3-ply python3-jinja2 openssl libyaml-dev libssl-dev libudev-dev libatomic1 meson -y
-RUN mkdir -p /camera_ws/src
-RUN git clone https://github.com/christianrauch/camera_ros.git /camera_ws/src/camera_ros
+# RUN apt update && apt install pkg-config python3-yaml python3-ply python3-jinja2 openssl libyaml-dev libssl-dev libudev-dev libatomic1 meson -y
+# RUN mkdir -p /camera_ws/src
+# RUN git clone https://github.com/christianrauch/camera_ros.git /camera_ws/src/camera_ros
 
-RUN bash -c "cd /camera_ws/ && source /opt/ros/humble/setup.bash && rosdep install --from-paths src --ignore-src --skip-keys=libcamera -y"
-RUN bash -c "cd /camera_ws/ && source /opt/ros/humble/setup.bash && colcon build"
+# RUN bash -c "cd /camera_ws/ && source /opt/ros/humble/setup.bash && rosdep install --from-paths src --ignore-src --skip-keys=libcamera -y"
+# RUN bash -c "cd /camera_ws/ && source /opt/ros/humble/setup.bash && colcon build"
 
-RUN apt update && apt install -y ros-humble-rmw-cyclonedds-cpp
+# RUN apt update && apt install -y ros-humble-rmw-cyclonedds-cpp
 
 ######### End camera configuration #########
 
@@ -74,8 +74,8 @@ RUN apt update && apt install -y ros-humble-teleop-twist-keyboard
 
 RUN mkdir -p /ros2_ws
 COPY ./ros2_ws/src /ros2_ws/src
-RUN bash -c "cd /ros2_ws/ && source /camera_ws/install/setup.bash && rosdep install --from-paths src --ignore-src --skip-keys=libcamera -y"
-RUN bash -c "cd /ros2_ws/ && source /camera_ws/install/setup.bash && colcon build"
+# RUN bash -c "cd /ros2_ws/ && source /camera_ws/install/setup.bash && rosdep install --from-paths src --ignore-src --skip-keys=libcamera -y"
+# RUN bash -c "cd /ros2_ws/ && source /camera_ws/install/setup.bash && colcon build"
 
 RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 RUN echo "alias sros2='source /opt/ros/humble/setup.bash && source /ros2_ws/install/setup.bash'" >> ~/.bashrc
