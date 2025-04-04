@@ -71,6 +71,7 @@ RUN apt update && apt install -y \
 RUN apt install -y i2c-tools libi2c-dev
 
 RUN apt update && apt install -y ros-humble-teleop-twist-keyboard
+RUN apt update && apt install -y ros-humble-teleop-twist-joy
 
 RUN mkdir -p /ros2_ws
 COPY ./ros2_ws/src /ros2_ws/src
@@ -78,8 +79,11 @@ COPY ./ros2_ws/src /ros2_ws/src
 # RUN bash -c "cd /ros2_ws/ && source /camera_ws/install/setup.bash && colcon build"
 
 RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+RUN echo "source /ros2_ws/install/setup.bash" >> ~/.bashrc
 RUN echo "alias sros2='source /opt/ros/humble/setup.bash && source /ros2_ws/install/setup.bash'" >> ~/.bashrc
-RUN echo "alias bros2='cd /ros2_ws && source /camera_ws/install/setup.bash && colcon build'" >> ~/.bashrc
+RUN echo "alias bros2='cd /ros2_ws && colcon build && source /ros2_ws/install/setup.bash'" >> ~/.bashrc
+
+WORKDIR /ros2_ws
 
 # COPY ./dds_config.xml /dds_config.xml
 # RUN chmod 644 /dds_config.xml
