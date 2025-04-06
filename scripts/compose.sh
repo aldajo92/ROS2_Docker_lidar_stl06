@@ -12,5 +12,19 @@ export DOCKER_CONTAINER_NAME
 export DOCKER_NETWORK
 export DOCKER_REGISTRY_ADDR
 
-# Run docker-compose
-docker compose -f ${PROJECT_ROOT}/docker-compose.yml up -d
+echo "DOCKER_IMAGE_NAME: ${DOCKER_IMAGE_NAME}"
+echo "DOCKER_CONTAINER_NAME: ${DOCKER_CONTAINER_NAME}"
+echo "DOCKER_NETWORK: ${DOCKER_NETWORK}"
+echo "DOCKER_REGISTRY_ADDR: ${DOCKER_REGISTRY_ADDR}"
+
+# Down the containers
+echo "executing the command: docker compose -f ${PROJECT_ROOT}/docker-compose.yml down"
+docker compose -f ${PROJECT_ROOT}/docker-compose.yml down
+
+# Pull the latest images
+echo "executing the command: docker compose -f ${PROJECT_ROOT}/docker-compose.yml pull"
+docker compose -f ${PROJECT_ROOT}/docker-compose.yml pull
+
+# Restart the containers
+echo "executing the command: docker compose -f ${PROJECT_ROOT}/docker-compose.yml up -d --force-recreate"
+docker compose -f ${PROJECT_ROOT}/docker-compose.yml up -d --force-recreate

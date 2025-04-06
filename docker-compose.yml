@@ -10,10 +10,7 @@ services:
     volumes:
       - /dev/:/dev
       - /run/udev:/run/udev
-    networks:
-      default:
-        aliases:
-          - ${DOCKER_NETWORK}
+    network_mode: host
     command: ["/bin/bash", "-c", "source /ros2_ws/install/setup.bash; ros2 launch waver_physical_bringup main.launch.py"]
     restart: always
     
