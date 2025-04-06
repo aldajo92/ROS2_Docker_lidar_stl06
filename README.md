@@ -19,21 +19,6 @@ git submodule update --init --recursive
 ./scripts/run.sh
 ~~~
 
-## Run the docker container with UI
-~~~bash
-./scripts/run_x11.sh
-~~~
-
-## Run the lidar node only
-~~~bash
-ros2 launch ldlidar_stl_ros2 ld06.launch.py
-~~~
-
-## Run the lidar node and rviz (requires X11)
-~~~bash
-ros2 launch ldlidar_stl_ros2 viewer_ld06.launch.py
-~~~
-
 ## License
 MIT
 
