@@ -73,6 +73,8 @@ RUN apt install -y i2c-tools libi2c-dev
 RUN apt update && apt install -y ros-humble-teleop-twist-keyboard
 RUN apt update && apt install -y ros-humble-teleop-twist-joy
 
+RUN apt update && apt install -y iw
+
 RUN mkdir -p /ros2_ws
 COPY ./ros2_ws/src /ros2_ws/src
 # RUN bash -c "cd /ros2_ws/ && source /camera_ws/install/setup.bash && rosdep install --from-paths src --ignore-src --skip-keys=libcamera -y"

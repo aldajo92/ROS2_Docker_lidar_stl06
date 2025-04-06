@@ -4,3 +4,9 @@
 [submodule "ros2_ws/src/i2c_motor_driver"]
 	path = ros2_ws/src/i2c_motor_driver
 	url = https://github.com/aldajo92/waver_i2c_motor.git
+[submodule "ros2_ws/src/ssd1306_display"]
+	path = ros2_ws/src/ssd1306_display
+	url = https://github.com/aldajo92/ssd1306_display_ros2.git
+[submodule "ros2_ws/src/ina219_battery"]
+	path = ros2_ws/src/ina219_battery
+	url = https://github.com/aldajo92/ina219_battery_ros2.git
