@@ -1,6 +1,6 @@
-# DOCKER and ROS2 humble | Lidar STL-06
+# DOCKER and ROS2 humble | Waveshare Rover
 
-This is a docker project template to work with ROS2 humble and the Lidar STL-06 sensor. This project uses the [ldlidar_stl_ros2](https://github.com/ldrobotSensorTeam/ldlidar_stl_ros2) package to work with the Lidar STL-06 sensor.
+This repository contains a Dockerfile and scripts to build and run a Docker container with ROS2 Humble and the Waveshare Rover.
 
 Please follow the instructions to build the docker image and run the container.
 
@@ -17,6 +17,16 @@ git submodule update --init --recursive
 ## Run the docker container
 ~~~bash
 ./scripts/run.sh
+~~~
+
+## Publish to Docker Registry
+~~~bash
+./scripts/publish.sh --localhost
+~~~
+
+## Get from Docker Registry
+~~~bash
+docker pull <hostame>:<port>/waver_image
 ~~~
 
 ## License
