@@ -1,4 +1,0 @@
-oled_display_node:
-  ros__parameters:
-    topic_first: "battery_status"
-    topic_second: "oled/second_row"
