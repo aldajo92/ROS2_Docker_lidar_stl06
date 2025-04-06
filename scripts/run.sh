@@ -15,7 +15,7 @@ docker run -it \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
   -v $XAUTHORITY:$XAUTHORITY \
   --name=${DOCKER_CONTAINER_NAME} \
-  --network ${ROS_NETWORK} \
+  --network ${DOCKER_NETWORK} \
   --volume ${PROJECT_ROOT}/ros2_ws:/ros2_ws \
   --volume /dev/:/dev \
   --volume /run/udev:/run/udev \
