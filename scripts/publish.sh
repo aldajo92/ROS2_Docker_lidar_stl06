@@ -26,4 +26,4 @@ docker buildx build --platform linux/arm64/v8 \
   -t ${DOCKER_REGISTRY_ADDR}/${DOCKER_IMAGE_NAME} ${PROJECT_ROOT} \
   -f ${PROJECT_ROOT}/Dockerfile.Prod
 
-docker push ${DOCKER_REGISTRY_ADDR}/${DOCKER_IMAGE_NAME}
+docker push ${DOCKER_REGISTRY_ADDR}/${DOCKER_IMAGE_NAME}:latest

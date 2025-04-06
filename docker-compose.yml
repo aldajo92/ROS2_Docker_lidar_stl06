@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  ros2_container:
+    image: ${DOCKER_IMAGE_NAME}
+    container_name: ${DOCKER_CONTAINER_NAME}
+    privileged: true
+    environment:
+      - DISPLAY=${DISPLAY}
+      - TERM=${TERM}
+      - QT_X11_NO_MITSHM=1
+      - XAUTHORITY=${XAUTHORITY}
+      - ROS_DOMAIN_ID=0
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - $XAUTHORITY:$XAUTHORITY
+      - ./ros2_ws:/ros2_ws
+      - /dev/:/dev
+      - /run/udev:/run/udev
+    networks:
+      default:
+        aliases:
+          - ${DOCKER_NETWORK}
+    stdin_open: true
+    tty: true
