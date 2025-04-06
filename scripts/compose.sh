@@ -10,6 +10,7 @@ source ${PROJECT_ROOT}/config_docker.sh
 export DOCKER_IMAGE_NAME
 export DOCKER_CONTAINER_NAME
 export DOCKER_NETWORK
+export DOCKER_REGISTRY_ADDR
 
 # Run docker-compose
-docker-compose -f ${PROJECT_ROOT}/docker-compose.yml up
+docker compose -f ${PROJECT_ROOT}/docker-compose.yml up -d
