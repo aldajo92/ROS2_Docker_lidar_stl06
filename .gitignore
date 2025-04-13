@@ -32,4 +32,7 @@ qtcreator-*
 COLCON_IGNORE
 AMENT_IGNORE
 
+# VSCode
+.vscode/
+
 # End of https://www.toptal.com/developers/gitignore/api/ros2

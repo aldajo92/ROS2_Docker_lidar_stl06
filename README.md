@@ -6,7 +6,7 @@ Please follow the instructions to build the docker image and run the container.
 
 ## Get submodules
 ~~~bash
-git submodule update --init --recursive
+git submodule update --init --remote --recursive
 ~~~
 
 ## Build the docker image
