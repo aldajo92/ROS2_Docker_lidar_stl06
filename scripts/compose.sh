@@ -27,4 +27,6 @@ docker compose -f ${PROJECT_ROOT}/docker-compose.yml pull
 
 # Restart the containers
 echo "executing the command: docker compose -f ${PROJECT_ROOT}/docker-compose.yml up -d --force-recreate"
-docker compose -f ${PROJECT_ROOT}/docker-compose.yml up -d --force-recreate
+docker compose -f ${PROJECT_ROOT}/docker-compose.yml up -d --force-recreate --pull always
+
+docker image prune -a -f
