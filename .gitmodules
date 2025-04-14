@@ -21,3 +21,6 @@
 	path = ros2_ws/src/waver_odometry
 	url = https://github.com/aldajo92/waver_odometry.git
 	branch = main
+[submodule "ros2_ws/src/imu_bno055"]
+	path = ros2_ws/src/imu_bno055
+	url = https://github.com/aldajo92/ros-imu-bno055.git
