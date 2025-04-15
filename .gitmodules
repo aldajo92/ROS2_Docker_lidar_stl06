@@ -1,6 +1,7 @@
 [submodule "ros2_ws/src/ros2_ws/src/ldlidar_stl_ros2"]
 	path = ros2_ws/src/ldlidar_stl_ros2
-	url = https://github.com/ldrobotSensorTeam/ldlidar_stl_ros2
+	url = https://github.com/aldajo92/ldlidar_stl_ros2.git
+	branch = master
 [submodule "ros2_ws/src/i2c_motor_driver"]
 	path = ros2_ws/src/i2c_motor_driver
 	url = https://github.com/aldajo92/waver_i2c_motor.git
