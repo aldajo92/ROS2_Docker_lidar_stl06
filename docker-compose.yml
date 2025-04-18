@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   ros2_container:
     image: ${DOCKER_REGISTRY_ADDR}/${DOCKER_IMAGE_NAME}:latest
@@ -13,4 +11,3 @@ services:
     network_mode: host
     command: ["/bin/bash", "-c", "source /camera_ws/install/setup.bash; source /ros2_ws/install/setup.bash; ros2 launch waver_physical_bringup main.launch.py"]
     restart: always
-    
