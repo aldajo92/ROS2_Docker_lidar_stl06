@@ -61,17 +61,18 @@ RUN apt update && apt install -y \
 # RUN mkdir -p /camera_ws/src
 # RUN git clone https://github.com/christianrauch/camera_ros.git /camera_ws/src/camera_ros
 
-# RUN bash -c "cd /camera_ws/ && source /opt/ros/humble/setup.bash && rosdep install --from-paths src --ignore-src --skip-keys=libcamera -y"
-# RUN bash -c "cd /camera_ws/ && source /opt/ros/humble/setup.bash && colcon build"
+# RUN bash -c "cd /camera_ws/ && source /opt/ros/${ROS_DISTRO}/setup.bash && rosdep install --from-paths src --ignore-src --skip-keys=libcamera -y"
+# RUN bash -c "cd /camera_ws/ && source /opt/ros/${ROS_DISTRO}/setup.bash && colcon build"
 
-# RUN apt update && apt install -y ros-humble-rmw-cyclonedds-cpp
+# RUN apt update && apt install -y ros-${ROS_DISTRO}-rmw-cyclonedds-cpp
 
 ######### End camera configuration #########
 
 RUN apt install -y i2c-tools libi2c-dev
 
-RUN apt update && apt install -y ros-humble-teleop-twist-keyboard
-RUN apt update && apt install -y ros-humble-teleop-twist-joy
+RUN apt update && apt install -y ros-${ROS_DISTRO}-teleop-twist-keyboard
+RUN apt update && apt install -y ros-${ROS_DISTRO}-teleop-twist-joy
+RUN apt update && apt install -y ros-${ROS_DISTRO}-robot-localization
 
 RUN apt update && apt install -y iw
 
@@ -80,9 +81,9 @@ COPY ./ros2_ws/src /ros2_ws/src
 # RUN bash -c "cd /ros2_ws/ && source /camera_ws/install/setup.bash && rosdep install --from-paths src --ignore-src --skip-keys=libcamera -y"
 # RUN bash -c "cd /ros2_ws/ && source /camera_ws/install/setup.bash && colcon build"
 
-RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
 RUN echo "source /ros2_ws/install/setup.bash" >> ~/.bashrc
-RUN echo "alias sros2='source /opt/ros/humble/setup.bash && source /ros2_ws/install/setup.bash'" >> ~/.bashrc
+RUN echo "alias sros2='source /opt/ros/${ROS_DISTRO}/setup.bash && source /ros2_ws/install/setup.bash'" >> ~/.bashrc
 RUN echo "alias bros2='cd /ros2_ws && colcon build && source /ros2_ws/install/setup.bash'" >> ~/.bashrc
 
 WORKDIR /ros2_ws
